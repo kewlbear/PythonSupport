@@ -27,6 +27,21 @@
 
 #import <sys/types.h>
 
+#define ForceLink(package, ...) \
+@interface ForceLink##package : NSObject { \
+    void **_symbols; \
+} \
+@end \
+\
+@implementation ForceLink##package { \
+    ; \
+} \
+- (void)foo { \
+    static void *symbols[] = { __VA_ARGS__ }; \
+    _symbols = symbols; \
+} \
+@end
+
 void *getSymbol(const char*);
 
 void Py_Initialize();

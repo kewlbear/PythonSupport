@@ -30,6 +30,35 @@
 
 #define SYMBOL(symbol) @#symbol: [NSValue valueWithPointer: symbol]
 
+ForceLink(Python,
+          Py_Initialize,
+          PyEval_GetBuiltins,
+          Py_IncRef,
+          PyRun_SimpleString,
+          PyUnicode_DecodeUTF8,
+          Py_DecRef,
+          PyBool_FromLong,
+          PyObject_GetAttrString,
+          PyErr_Occurred,
+          PyTuple_New,
+          PyObject_CallObject,
+          PyLong_AsLong,
+          PyDict_New,
+          PyDict_SetItem,
+          PyImport_ImportModule,
+          PyObject_GetIter,
+          PyIter_Next,
+          PyObject_RichCompareBool,
+          PyUnicode_AsUTF8,
+          PyLong_FromLong,
+          PyTuple_SetItem,
+          PyObject_Call,
+          PyObject_GetItem,
+          PyDict_Next,
+          PyErr_Fetch,
+          PyErr_Clear,
+          )
+
 static NSDictionary *symbols;
 
 void *getSymbol(const char *name) {
